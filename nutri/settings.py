@@ -26,7 +26,7 @@ TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 SECRET_KEY = 'django-insecure-w6re@vvxnzrlptjq41-h@3ww5w%s7^k6w-a3l_q8&38_&4bs%!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['nutricode.azurewebsites.net']
 
