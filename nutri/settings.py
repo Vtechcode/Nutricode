@@ -28,7 +28,7 @@ SECRET_KEY = 'django-insecure-w6re@vvxnzrlptjq41-h@3ww5w%s7^k6w-a3l_q8&38_&4bs%!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://nutricode.azurewebsites.net/']
 
 
 # Application definition
