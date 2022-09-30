@@ -1,0 +1,67 @@
+{% extends 'landing.html' %}
+
+<h2>Hey</h2>
+{% block content %}
+<table class="responsive-table">
+  <thead>
+    <tr>
+        <th>Disease</th>
+        <th>Symptoms</th>
+        <th>Diet</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td>{{ search }}</td>
+      <td>{{ disease_symptoms }}</td>
+      <td>{{ disease_diet }}</td>
+      
+    </tr>
+  </tbody>
+</table>
+
+<table class="responsive-table">
+  <thead>
+    <tr>
+        
+        <th>Food Item</th>
+        <th>Easmatt supermarket Price</th>
+        <th>Easmatt supermarket Price URL</th>
+        <th>Jumia Price</th>
+        <th>Jumia Price URL</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    
+      {% for food, price in food_type.items %}
+      <tr>
+      
+      
+      <td>{{ food }}</td>
+
+      
+      
+      <td>{{ price.0.0 }}</td>
+
+      <td><a href="{{ price.0.1 }}" target="_blank">Link</a></td>
+      
+
+      
+
+      <td>{{ price.1.0 }}</td>
+
+      <td><a href="{{ price.1.1 }}" target="_blank">Link</a></td>
+      
+      
+    </tr>
+      {% endfor %}
+      
+      
+    
+  </tbody>
+</table>
+
+
+{% endblock %}

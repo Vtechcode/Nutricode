@@ -1,0 +1,58 @@
+{% extends 'index.html' %}
+
+    <!-- ----------about us content----------- -->
+    {% block content %}
+    {% load static %}
+    <section class="about-us">
+
+        <div class="row">
+            <div class="about-col">
+                <h1>
+                    NutriCode is your nutitional advisor in your pocket
+                </h1>
+                <p>
+                    It is so easy to get confused when it comes to 
+                    health and nutrition. Even qualified 
+                    experts often seem to hold opposing opinions, 
+                    which can make it difficult to figure out what you should 
+                    actually be doing to optimize your health.
+                    <br>
+                    Get Health and Nutrition Tips That 
+                    Are Actually Evidence-Based From NutriCode Health System
+                </p>
+                <a href="" class="hero-btn">EXPLORE NOW</a>
+            </div>
+
+            <div class="about-col">
+                <img src="{% static 'CSS/images/nutricode_logo.jpeg' %}" alt="">
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- --------------footer----------- -->
+    <section class="footer">
+        <h4>About US</h4>
+        <p>
+            NutriCode is a web system that allows one to search a particular disease and it curates
+             a diet according to what you have searched. 
+             <br>It also suggests the supermarkets near your location where you can buy the foodstuffs and indicates the approximate price of each foodstuff.
+        </p>
+        <!-- <p>NutriCode is a health system that assists 
+            people around the world to get nutritional advice <br>
+            through our healthcare and community platforms and 
+            avoid major diseases. </p> -->
+
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>Made with <i class="fa fa-heart-o"></i> by NutriCode team</p>
+    </section>
+
+    {% endblock %}
+
+    

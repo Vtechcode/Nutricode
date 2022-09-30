@@ -1,0 +1,107 @@
+
+
+{% extends 'index.html' %}
+
+    <!-- ----------disease details----------- -->
+    {% block content %}
+    <section class="disease-details">
+
+        <div class="disease">
+            
+            <p class="disease-name">{{ search }}</p>
+
+            <p class="disease-description">
+                <h3>Disease Symptoms</h3>
+                {{ disease_symptoms }}
+            </p>
+
+        </div>
+      
+        <div class="food-list">
+            <h3>Recomended Food staff for {{ search }}</h3>
+            <div class="foodsList">
+
+                <ul >
+                    {% for diet in disease_diet %}
+                    <li>{{ diet }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+           
+        </div>
+    
+        <div class="near-shops">
+            <h3>Near Supermarket</h3>
+            <div class="nearShops">
+                <ol>
+                    <li>Jumia</li>
+                    <li>EastMatt</li>
+                </ol>
+            </div>
+            
+        </div>
+
+        <div class="food-table">
+            <table id="food">
+                <tr>
+                    <th>Food Item</th>
+                    <th>Easmatt supermarket Price</th>
+                    <th>Easmatt supermarket Price URL</th>
+                    <th>Jumia Price</th>
+                    <th>Jumia Price URL</th>
+                </tr>
+                {% for food, price in food_type.items %}
+      <tr>
+      
+      
+      <td>{{ food }}</td>
+
+      
+      
+      <td>{{ price.0.0 }}</td>
+
+      <td><a href="{{ price.0.1 }}" target="_blank">Link</a></td>
+      
+
+      
+
+      <td>{{ price.1.0 }}</td>
+
+      <td><a href="{{ price.1.1 }}" target="_blank">Link</a></td>
+      
+      
+    </tr>
+    {% endfor %}
+                
+            </table>
+        </div>
+    
+    </section>
+
+
+
+    <!-- --------------footer----------- -->
+    <section class="footer">
+        <h4>About US</h4>
+        <p>
+            NutriCode is a web system that allows one to search a particular disease and it curates
+             a diet according to what you have searched. 
+             <br>It also suggests the supermarkets near your location where you can buy the foodstuffs and indicates the approximate price of each foodstuff.
+        </p>
+        <!-- <p>NutriCode is a health system that assists 
+            people around the world to get nutritional advice <br>
+            through our healthcare and community platforms and 
+            avoid major diseases. </p> -->
+
+        <div class="icons">
+            <i class="fa fa-facebook"></i>
+            <i class="fa fa-twitter"></i>
+            <i class="fa fa-instagram"></i>
+            <i class="fa fa-linkedin"></i>
+        </div>
+        <p>Made with <i class="fa fa-heart-o"></i> by NutriCode team</p>
+    </section>
+
+{% endblock %}
+
+
