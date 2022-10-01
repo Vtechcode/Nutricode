@@ -63,7 +63,7 @@ def disease_search(request):
         html_doc = web_page.content
         scraper = BeautifulSoup(html_doc, features='html.parser')
         table = scraper.body.table.find_all('tr')
-        search = request.POST.get('search')
+        #search = request.POST.get('search')
         models.DiseaseSearch.objects.create(search=search)
         tr = list(table)
         link_ = []
