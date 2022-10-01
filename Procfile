@@ -1,1 +1,1 @@
-web: gunicorn health.wsgi:application --log-file -
+web: gunicorn nutri.wsgi:application --log-file -
