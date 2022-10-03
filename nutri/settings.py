@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-w6re@vvxnzrlptjq41-h@3ww5w%s7^k6w-a3l_q8&38_&4bs%!
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['health-nutricode.herokuapp.com', '127.0.0.1']
 
 
 # Application definition

@@ -4,6 +4,7 @@
  */
 /* FONT PATH
  * -------------------------- */
+<<<<<<< HEAD
 
  /* @font-face {
   font-family: 'FontAwesome';
@@ -13,6 +14,13 @@
   font-style: normal;
 } */
 
+=======
+@font-face {
+  font-family: 'FontAwesome';
+  font-weight: normal;
+  font-style: normal;
+}
+>>>>>>> 2a2ee6359d3d23684a99ca4239687ffc77f90dea
 .fa {
   display: inline-block;
   font: normal normal normal 14px/1 FontAwesome;
