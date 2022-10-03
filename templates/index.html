@@ -78,18 +78,19 @@
         <div class="container-row">
 
             <div class="first-row">
-                <div class="disease-col" onclick="onItemClick()">
+                <div class="disease-col" onclick="onItemClick('iron-deficiency anemia')">
                     <h3>Anemia</h3>
                     <p>Anemia is a condition in which you lack enough healthy red blood cells to carry adequate oxygen to your body's tissues</p>
                 </div>
     
-                <div class="disease-col" onclick="onItemClick()">
+                <div class="disease-col" onclick="onItemClick('scurvy')">
+                    
                     <h3>Scurvy</h3>
                     <p>a disease caused by a deficiency of vitamin C, characterized by swollen bleeding gums and the opening of previously healed wounds, which particularly affected poorly nourished sailors until the end of the 18th century.</p>
     
                 </div>
     
-                <div class="disease-col" onclick="onItemClick()">
+                <div class="disease-col" onclick="onItemClick('pellagra')">
                     <h3>Pellagra</h3>
                     <p>Pellagra is a systemic disease caused by a severe deficiency of niacin (vitamin B3). It affects the whole body and can eventually lead to death.</p>
     
@@ -97,7 +98,15 @@
             </div>
 
 
-            
+            <form id="form1" action="{% url 'new_search' %}" method="post" style="display: none;">
+                {% csrf_token %}
+    <input class="search-item"
+        id="put"
+        type="text"
+        name="search"
+        placeholder="Search Disease..."
+        class="search-input" placeholder=" search for any disease" >
+            </form>
 
             
             

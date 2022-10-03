@@ -27,7 +27,9 @@ function hideMenu(){
 var diseaseCol = document.getElementsByClassName("disease-col")
 
 
-function onItemClick(){
-    location.href = "./details.html";
-    // window.location.assign("details.html");
+function onItemClick(disease){
+    console.log('hello');
+    document.getElementById("put").value = disease;
+    let form = document.getElementById("form1");
+            form.submit();
 }
