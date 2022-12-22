@@ -32,6 +32,7 @@ DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = [config('ALLOWED_HOST'), '127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS = ['https://nutricode-app.azurewebsites.net']
 
 # Application definition
 
