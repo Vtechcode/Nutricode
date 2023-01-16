@@ -49,8 +49,10 @@
                     <th>Easmatt supermarket Price URL</th>
                     <th>Jumia Price</th>
                     <th>Jumia Price URL</th>
+                    <th>GreenSpoon Price</th>
+                    <th>GreenSpoon URL</th>
                 </tr>
-                {% for food, price in food_type.items %}
+        {% for food, price in food_type.items %}
       <tr>
       
       
@@ -68,6 +70,9 @@
       <td>{{ price.1.0 }}</td>
 
       <td><a href="{{ price.1.1 }}" target="_blank">Link</a></td>
+
+      <td>{{ price.2.0 }}</td>
+      <td><a href="{{ price.2.1 }}" target="_blank">Link</a></td>
       
       
     </tr>
