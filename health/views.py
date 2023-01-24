@@ -3,7 +3,7 @@ import certifi
 from urllib.parse import quote_plus
 from bs4 import BeautifulSoup
 from django.shortcuts import render
-from . import models
+from .models import DiseaseSearch
 from . import website_scraping
 
 
@@ -12,7 +12,7 @@ BASE_NAIVAS_URL = 'https://e-mart.co.ke/index.php?category_id=0&search={}&submit
 
 # Create your views here.
 def home(request):
-    return render(request, 'index.html')
+    return render(request, 'health/index.html')
 
 def about(request):
     return render(request, 'health/about.html')
@@ -66,38 +66,68 @@ def disease_search(request):
         disease_list = []
         for table_row in table_rows:
             disease_name_and_cause = table_row.find('td', scope = 'row').text.strip().split(' ')
-            disease_name = disease_name_and_cause[0]
-            disease_list.append(disease_name)
+            ddisease_name = disease_name_and_cause[0]
+            disease_list.append(ddisease_name)
 
-        for table_row in table_rows:
-            disease_name_and_cause = table_row.find('td', scope = 'row').text.strip().split(' ')
-            disease_name = disease_name_and_cause[0]
-            other_table_data = table_row.find_all('td', scope = '')
-            disease_symptoms = other_table_data[0].text.strip()
-            disease_diet = other_table_data[1].text.strip().split(',')
-            if search.lower() in disease_list:
-                
-                
-                food_type = dict()
-
-                for food_item in disease_diet:
-                    food_type[food_item] = [jumia_site_scraping(food_item), emart_site_scraping(food_item), greenspoon_site_scraping(food_item)]
-                    print(food_type[food_item])
-
-                print(food_type)
-            else:
-                print('not in database')
-
+        frontend_display = dict()
+        if search.lower() in disease_list:
             
-            frontend_display = {
-                'search': disease_name,
-                'disease_symptoms': disease_symptoms,
-                'disease_diet': disease_diet,
-                'food_type': food_type,
-            }
+            for table_row in table_rows:
+                disease_name_and_cause = table_row.find('td', scope = 'row').text.strip().split(' ')
+                ddisease_name = disease_name_and_cause[0]
+                if ddisease_name == search.lower():
+                    other_table_data = table_row.find_all('td', scope = '')
+                    disease_symptoms = other_table_data[0].text.strip()
+                    disease_diet = other_table_data[1].text.strip().split(',')
+            
+                    food_type = dict()
+                    disease_diet_in_database = ()
+                    for food_item in disease_diet:
+                        food_type[food_item] = [jumia_site_scraping(food_item), emart_site_scraping(food_item), greenspoon_site_scraping(food_item)]
+                        for food in food_type:
+                            disease_diet_in_database += tuple(food.strip())
+                            print(food.strip())
+                        print(food_type[food_item])
+
+
+                    print(disease_diet_in_database)
+                    frontend_display = {
+                            'search': ddisease_name,
+                            'disease_symptoms': disease_symptoms,
+                            'disease_diet': disease_diet,
+                            'food_type': food_type,
+                        }
+
+                    
+                    DiseaseSearch.objects.create(disease_name=search, disease_symptoms=disease_symptoms, disease_diet=disease_diet_in_database)
+                    
+
             print(food_type)
-            models.DiseaseSearch.objects.create(disease_name=search, disease_symptoms=disease_symptoms, disease_diet=disease_diet)
-            return render(request, 'health/details.html', frontend_display)
+
+        elif DiseaseSearch.objects.filter(disease_name = search.lower()).exists():#count() > 0:
+            disease = DiseaseSearch.objects.get(disease_name = search.lower())
+            print(disease.disease_diet)
+            frontend_display = {
+                            'search': f"{search} is not in our database currently",
+                            'disease_symptoms': "none",
+                            'disease_diet': [],
+                            'food_type': [],
+                        }
+        
+
+        else:
+            print('not in database')
+            frontend_display = {
+                            'search': f"{search} is not in our database currently",
+                            'disease_symptoms': "none",
+                            'disease_diet': [],
+                            'food_type': [],
+                        }
+        
+        return render(request, 'health/details.html', frontend_display)
+
+        
+        
     else:
         return render(request, 'health/details.html')
 
