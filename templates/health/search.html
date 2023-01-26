@@ -76,19 +76,18 @@ https://templatemo.com/tm-538-digital-trend
 
                     <div class="col-lg-12 col-12 py-5 mt-5 mb-3 text-center">
                       <div class="searchresult">
-                        <h4>Kwarshiorkor</h4>
+                        <h4>{{ search }} Symptoms</h4>
                         <!-- <a>https://en.wikipedia.org/wiki/Lock_(computer_science)</a> <button>▼</button> -->
-                        <p>Kwashiorkor is a severe form of malnutrition. It's most common in some developing regions where babies and children do not get enough protein or other essential nutrients in their diet. The main sign of kwashiorkor is too much fluid in the body's tissues, which causes swelling under the skin (oedema).</p>
+                        <p>{{ disease_symptoms }}</p>
                     </div>
                     <div class="food-list">
-                      <h4>Recomended Food Stuff For Kwarshiorkor</h4>
+                      <h4>Recomended Food Stuff For {{ search }}</h4>
                       <div class="foodsList">
           
                           <ul >
-                              <li>Cabbage</li>
-                              <li>Carrot</li>
-                              <li>Kale</li>
-                              <li>Apple</li>
+                            {% for diet in disease_diet %}
+                            <li>{{ diet }}</li>
+                            {% endfor %}
                           </ul>
                       </div>
                      
@@ -97,9 +96,9 @@ https://templatemo.com/tm-538-digital-trend
                     <h4>Nearby Supermarkets</h4>
                     <div class="nearShops">
                         <ol>
-                            <li>QuickMart</li>
-                            <li>Naivas</li>
-                            <li>CarreFour</li>
+                          <li>Jumia</li>
+                          <li>E-Mart</li>
+                          <li>GreenSpoon</li>
                         </ol>
                     </div>
 
@@ -107,52 +106,38 @@ https://templatemo.com/tm-538-digital-trend
                       <table id="food">
                           <tr>
                           <th>Food Menus</th>
-                          <th>Quantity</th>
-                          <th>Price in QuickMart</th>
-                          <th>Price in Naivas</th>
-                          <th>Price in CarreFour</th>
+                          <th>Jumia supermarket Price</th>
+                          <th>Jumia supermarket Price URL</th>
+                          <th>E-Mart Price</th>
+                          <th>E-Mart Price URL</th>
+                          <th>GreenSpoon Price</th>
+                          <th>GreenSpoon URL</th>
                           </tr>
+                          {% for food, price in food_type.items %}
                           <tr>
-                          <td>Cabbage</td>
-                          <td>1 bunch</td>
-                          <td>sh 20</td>
-                          <td>sh 30</td>
-                          <td>sh 40</td>
-              
-                          </tr>
-                          <tr>
-                          <td>Carrot</td>
-                          <td>1 Kg</td>
-                          <td>sh 10</td>
-                          <td>sh 40</td>
-                          <td>sh 20</td>
-              
-                          </tr>
-                          <tr>
-                          <td>Potatoes</td>
-                          <td>1 Kg</td>
-                          <td>sh 60</td>
-                          <td>sh 40</td>
-                          <td>sh 50</td>
-              
-                          </tr>
-                          <tr>
-                          <td>Kale</td>
-                          <td>2 bunch</td>
-                          <td>sh 100</td>
-                          <td>sh 50</td>
-                          <td>sh 40</td>
-              
-                          </tr>
-                          <tr>
-                              <td><h3>Total</h3></td>
-                              <td></td>
-                              <td><h3>sh 190</h3></td>
-                              <td><h3>sh 160</h3></td>
-                              <td><h3>sh 150</h3></td>
-              
-                          </tr>
                           
+                          
+                          <td>{{ food }}</td>
+
+                          
+                          
+                          <td>{{ price.0.0 }}</td>
+
+                          <td><a href="{{ price.0.1 }}" target="_blank">Link</a></td>
+                          
+
+                          
+
+                          <td>{{ price.1.0 }}</td>
+
+                          <td><a href="{{ price.1.1 }}" target="_blank">Link</a></td>
+
+                          <td>{{ price.2.0 }}</td>
+                          <td><a href="{{ price.2.1 }}" target="_blank">Link</a></td>
+                          
+                          
+                        </tr>
+                        {% endfor %}
                       </table>
                   </div>
                     

@@ -124,7 +124,7 @@ def disease_search(request):
                             'food_type': [],
                         }
         
-        return render(request, 'health/details.html', frontend_display)
+        return render(request, 'health/search.html', frontend_display)
 
         
         
