@@ -19,6 +19,7 @@
      <link rel="stylesheet" href="{% static 'styling/css/owl.carousel.min.css' %}">
      <link rel="stylesheet" href="{% static 'styling/css/owl.theme.default.min.css' %}">
      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+     <link rel="stylesheet" href="{% static 'styling/css/style.css' %}">
 
      <!-- MAIN CSS -->
      <link rel="stylesheet" href="{% static 'styling/css/templatemo-digital-trend.css' %}">
@@ -305,6 +306,40 @@
     </footer>
 
 
+    <div class="container">
+     <div class="chatbox">
+         <div class="chatbox__support">
+             <div class="chatbox__header">
+                 <div class="chatbox__image--header">
+                     <img src="https://img.icons8.com/color/48/000000/circled-user-female-skin-type-5--v1.png" alt="image">
+                 </div>
+                 <div class="chatbox__content--header">
+                     <h4 class="chatbox__heading--header">NutriCode Chat Support</h4>
+                     <p class="chatbox__description--header">Hi there! I'm Nawi. How may I help you?</p>
+                 </div>
+             </div>
+             <div class="chatbox__messages">
+                 <div>{{ answer }}</div>
+             </div>
+             <div class="chatbox__footer">
+               <form action="{% url 'chat' %}" method="post">
+                    {% csrf_token %}
+                 <input type="text" placeholder="Write a message..." name = 'message'>
+               
+                 <button class="chatbox__send--footer send__button">Send</button>
+               </form>
+             </div>
+         </div>
+         <div class="chatbox__button">
+             <button><img src="{% static 'styling/images/chatbox-icon.svg' %}" /></button>
+         </div>
+     </div>
+ </div>
+ <script>
+     var received_data  = "{{ answer|safe }}";
+ </script>
+     
+     <script type="text/javascript" src="{% static 'styling/js/app.js' %}"></script>
      <!-- SCRIPTS -->
      <script src="{% static 'styling/js/jquery.min.js' %}"></script>
      <script src="{% static 'styling/js/bootstrap.min.js' %}"></script>

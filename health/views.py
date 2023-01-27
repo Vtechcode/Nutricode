@@ -5,6 +5,8 @@ from bs4 import BeautifulSoup
 from django.shortcuts import render
 from .models import DiseaseSearch
 from . import website_scraping
+from django.http import JsonResponse
+from .chat import gpt3_completion, open_file
 
 
 BASE_JUMIA_URL = 'https://www.jumia.co.ke/catalog/?q={}'
@@ -133,4 +135,15 @@ def disease_search(request):
 
 
 
-
+def predict(request):
+    conversation = list()
+    while True:
+        user_input = request.POST.get('message')
+        conversation.append('USER: %s' % user_input)
+        text_block = '\n'.join(conversation)
+        prompt = open_file('health/prompt_chat.txt').replace('<<BLOCK>>', text_block)
+        prompt = prompt + '\nNAWI:'
+        response = gpt3_completion(prompt)
+        message = {"answer": response}
+        conversation.append('NAWI: %s' % response)
+        return render(request, 'health/index.html', message)
